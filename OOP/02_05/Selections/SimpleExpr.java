@@ -1,8 +1,7 @@
 /*
  * Selection is a means of flow-control in imperative programming. Some
- * literature also call it branching. This example shows three selection
- * statements, the if-then statement, the if-then-else statement, and
- * the switch statement. 
+ * literature also call it branching. This example shows two selection
+ * statements, the if-then statement and the if-then-else statement
  *
  * See 
  *  https://docs.oracle.com/javase/specs/jls/se9/html/jls-14.html#jls-14.9
