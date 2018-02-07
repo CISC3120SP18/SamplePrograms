@@ -19,6 +19,22 @@ class DogPark {
         feedDog(millie);
     }
 
+    Dog[] getAllDogs() {
+        Dog[] dogs = new Dog[2];
+        dogs[0] = buddy;
+        dogs[1] = millie;
+        return dogs;
+    }
+
+    Dog getRandomDog() {
+        int dogNo = (int) (Math.random() * 2);
+        if (dogNo == 0)  {
+            return buddy;
+        } else {
+            return millie;
+        }
+    }
+
     void listDogs() {
         System.out.println(buddy.getName() + ": " + buddy.getSize());
         System.out.println(millie.getName() + ": " + millie.getSize());
