@@ -68,8 +68,8 @@ public class Dog {
 		 * two are known only at runtime.
 		 */
 		if (!Dog.class.isAssignableFrom(other.getClass())) {
-	        return false;
-	    }
+			return false;
+		}
 		
 		/* the "other" variable references to a Dog of ***some sort*** */
 		Dog otherDog = (Dog) other;
