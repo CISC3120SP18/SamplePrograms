@@ -51,19 +51,21 @@ public class Dog {
 		 * The following is try to test whether Java compiler and Java runtime accepts
 		 *    Dog dog = other;
 		 * i.e., whether other is a compatible type to Dog, which is related to inheritance
-		 * Semantically, we try to test whether the object "other" references to is a 
-		 * "Dog" project. 
+		 * Semantically, we try to test whether the object "other" references to is a "Dog" 
+		 * object some sort. 
 		 * 
 		 * The statement can also be written as 
 		 * 
-		 * if (!Dog.class.isInstance(other.getClass()))
+		 * if (!Dog.class.isInstance(other))
 		 * 
 		 * However, it is subtly different from 
 		 * 
 		 * if (other instanceof Dog)
 		 * 
-		 * although many would use "instanceof". The difference is that "instanceof" is
-		 * being checked at the compilation time while the other two at runtime
+		 * although many would use "instanceof". All these are generally checked at run-time.
+		 * The difference is that "instanceof" is being checked against a class whose type is
+		 * known at the compilation time while  the type being checked in the case of the other
+		 * two are known only at runtime.
 		 */
 		if (!Dog.class.isAssignableFrom(other.getClass())) {
 	        return false;
