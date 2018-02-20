@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>edu.cuny.brooklyn.cisc3120.oop</groupId>
-	<artifactId>ArrayListExamples</artifactId>
+	<artifactId>ArrayArrayListExamples</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ArrayListExamples</name>
+	<name>ArrayArrayListExamples</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
