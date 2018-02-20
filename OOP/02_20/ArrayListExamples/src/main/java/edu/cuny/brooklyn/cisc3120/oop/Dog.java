@@ -12,6 +12,24 @@ public class Dog {
 	}
 	
 
+
+	public static Dog newInstance(Dog dog) {
+		/*
+		 *  id is of a primitive type, but name is a reference type. Are we making
+		 *  a shallow copy of name, or deep copy? If we are to change the value
+		 *  of name, how about its copy? name is a String, which is specially
+		 *  treated in Java. If it were not of a String type, care may have
+		 *  to taken, depending on whether you want a deep copy of name or
+		 *  not 
+		 */
+		return new Dog(dog.id, dog.name); 
+	}
+
+	public String getName() {
+		return name;
+	}
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -27,6 +45,7 @@ public class Dog {
 	
 	// @Override // uncomment this will yield compilation error. more in the future
 	public boolean equals(Dog otherDog) {
+		System.out.println("calling equals(Dog otherDog) ...");
 		if (otherDog != null && id == otherDog.id && name.equals(otherDog.name)) {
 			return true;
 		} else {
@@ -38,6 +57,7 @@ public class Dog {
 	
 	@Override
 	public boolean equals(Object other) {
+		System.out.println("calling equals(Object other) ...");
 		/* if the "other" variable is null, it is not equal because if you can ever get here
 		 * the "this" variable is not null 
 		 */

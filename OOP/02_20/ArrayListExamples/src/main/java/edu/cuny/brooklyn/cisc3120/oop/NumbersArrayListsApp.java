@@ -6,9 +6,13 @@ import java.util.Random;
 public class NumbersArrayListsApp {
 	public static void main(String[] args) {
 		NumbersArrayListsApp numbersApp = new NumbersArrayListsApp();
+		// Exercise 1a: create ArrayList without using generic programming (not recommended)
 		System.out.println("Calling playWithArrayListWithRawType():");
 		numbersApp.playWithArrayListWithRawType();
 		
+		// Exercise 1b: create ArrayList with generic programming (preferred)
+		// Exercise 7a: add elements in ArrayList
+		// Exercise 8: delete elements in ArrayList
 		System.out.println("Calling playWithArrayList():");
 		numbersApp.playWithArrayList();
 	}
@@ -76,7 +80,7 @@ public class NumbersArrayListsApp {
 		printArrayListUsingEnhancedFor(numbers);
 	}
 	
-	
+	// Exercise 7a: add elements in ArrayList
 	ArrayList<Integer> makeRandomArrayList() {
 		Random rng = new Random();
 		ArrayList<Integer> numbers = new ArrayList<Integer>();		
@@ -102,6 +106,7 @@ public class NumbersArrayListsApp {
 		}
 	}
 	
+	// Exercise 8: delete elements in ArrayList
 	void removeElementsWithOddIndex(ArrayList<Integer> numbers) {
 		int numRemoved = 0;
 		for (int i=numbers.size()-1; i>=0; i--) {
