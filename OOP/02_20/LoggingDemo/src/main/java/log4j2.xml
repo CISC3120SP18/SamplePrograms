@@ -18,6 +18,11 @@
 		</Async>
 	</Appenders>
 	<Loggers>
+		<Logger name="edu.brooklyn.cuny.oop" level="ALL"
+			additivity="false">
+			<AppenderRef ref="Console" level="INFO"/>
+			<AppenderRef ref="ASYNCFILE" level="ALL"/>
+		</Logger>
 		<Root level="ALL">
 			<AppenderRef ref="Console" level="INFO"/>
 			<AppenderRef ref="ASYNCFILE" level="ALL"/>

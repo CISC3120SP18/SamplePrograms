@@ -18,6 +18,28 @@ public class LoggingDemoApp {
 		 * In addition, having a logging file enables us to examine the program
 		 * behavior at a later time even if when the application has shipped
 		 * to the users. 
+		 * 
+		 * To view the log file while the program is running, 
+		 * - use "tail" in Unix-like operating systems, such as, Mac OS X, 
+		 *   i.e., go to the directory when the Maven project is,
+		 *   locate the log file, in this case, loggingdemo.log, do
+		 *   
+		 *   tail -f loggingdemo.log
+		 *   
+		 * - use "GET-CONTENT" in PowerShell in Windows, i.e.,
+		 *   go to the directory when the Maven project is,
+		 *   locate the log file, in this case, loggingdemo.log, do
+		 *   the two steps,
+		 *   1. launch the Windows PowerShell
+		 *   
+		 *       powershell
+		 *   
+		 *   2. in the Powershell, do
+		 *   
+		 *       GET-CONTENT loggingdemo.log -WAIT
+		 *       
+		 * In both systems, press "CTRL-C" to exit "tail" or
+		 * "GET-CONTENT".  
 		 */
 		LOGGER.info("LoggingDemoApp starts.");
 		LoggingDemoApp app = new LoggingDemoApp();
