@@ -11,6 +11,11 @@ public class ShapeObjectApp
 {
     public static void main(String[] args) {
         ArrayList<Shape> shapeList = makeRandomShapes(10);
+        Shape s1 = new Circle("1", 10);
+        Shape s2 = new Rectangle("2", 100, 100);
+        if (!s1.getClass().isInstance(s2)) {
+        	System.out.println("s1 and s2 are different data types");
+        }
         computeAreas(shapeList);
     }
 
