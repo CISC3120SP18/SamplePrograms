@@ -20,7 +20,7 @@ public class ShapeObjectsEnhancedApp {
 		System.out.println();
 		
 		// TODO 6: Create a separate class (top-level class) in the package of
-		//         edu.cuny.brooklyn.coop, call the class, ShapeNameComparator.
+		//         edu.cuny.brooklyn.oop, call the class, ShapeNameComparator.
 		//         The comparator is to compare the string value of the names
 		//         of two shapes, and is used to sort shapes in alphabet order
 		//         based on their names. 
