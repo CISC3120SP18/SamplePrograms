@@ -3,6 +3,7 @@ package edu.cuny.brooklyn.oop;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class AddressBook {
 	// Why Set? 
@@ -14,6 +15,10 @@ public class AddressBook {
 	
 	public void addPhoneNumber(String number) {
 		phoneNumbers.add(number);
+	}
+	
+	public void removeIf(Predicate<? super String> filter) {
+		phoneNumbers.removeIf(filter);
 	}
 	
 	public Iterator<String> iterator() {

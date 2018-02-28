@@ -1,6 +1,8 @@
 /**
  * Adapted from the Java Tutorial by Oracle at
  * https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html
+ * 
+ * This example is about local class
  */
 package edu.cuny.brooklyn.oop;
 
