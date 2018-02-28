@@ -1,6 +1,5 @@
 package edu.cuny.brooklyn.oop.animal;
 
-// Slide 13
 //public class Cat extends Feline {
 //
 //	public Cat(String name) {
@@ -14,7 +13,7 @@ package edu.cuny.brooklyn.oop.animal;
 //
 //}
 
-// Slide 18
+
 public class Cat extends Feline implements CatMotion {
 
 	public Cat(String name) {
