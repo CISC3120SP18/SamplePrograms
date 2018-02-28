@@ -57,7 +57,7 @@ public class AddressBookApp {
 		// step 3. get rid of the boiler-plate code
 //		ab.removeIf((String phoneNumber) -> {return phoneNumber.indexOf(areaCode) == 0;});
 
-		// step 4. simply it further
+		// step 4. simplify it further
 //		ab.removeIf(phoneNumber -> phoneNumber.indexOf(areaCode) == 0);
 		
 		// step 5. more ...
