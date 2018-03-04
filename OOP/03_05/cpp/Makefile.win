@@ -1,0 +1,23 @@
+all: autocatapp.exe heapcatapp.exe contextcatapp.exe crashingcatapp.exe
+
+CFLAGS=/W3 /c /EHsc
+LFLAGs=
+CXX=cl.exe
+autocatapp.exe: cat.obj autocatapp.obj
+	$(CXX) $(LFLAGS) cat.obj autocatapp.obj /Feautocatapp.exe 
+
+heapcatapp.exe: cat.obj heapcatapp.obj
+	$(CXX) $(LFLAGS) cat.obj heapcatapp.obj /Feheapcatapp.exe 
+
+contextcatapp.exe: cat.obj house.obj contextcatapp.obj
+	$(CXX) $(LFLAGS) /Fecontextcatapp.exe cat.obj house.obj contextcatapp.obj
+
+crashingcatapp.exe: cat.obj crashingcatapp.obj
+	$(CXX) $(LFLAGS) /Fecrashingcatapp.exe cat.obj crashingcatapp.obj
+
+
+.cc.obj:
+	$(CXX) $(CFLAGS) $<
+
+clean:
+	del *.obj autocatapp.exe heapcatapp.exe contextcatapp.exe crashingcatapp.exe
