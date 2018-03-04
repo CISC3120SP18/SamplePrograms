@@ -1,6 +1,6 @@
 package edu.brooklyn;
 
-public class NumterApp {
+public class NumberApp {
 	public static void main(String[] args) {
 		NumberUtil numberUtilOne = new NumberUtil();
 
