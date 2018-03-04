@@ -1,9 +1,10 @@
 #include "cat.h"
 
+// since c++17
+using Edu::Brooklyn::Cat; 
+
 /**
- * heap storage:
- *  the context where the Cat objects indicates  they are allocated in the
- *  stack.
+ * heap storage because of "new"
  */
 int main(int argc, char* argv[]) {
     /*
@@ -16,8 +17,6 @@ int main(int argc, char* argv[]) {
     Cat *ginger = new Cat("ginger"), 
         *tuxedo = new Cat("tuxedo");
     */
-    // since c++17
-    using Edu::Brooklyn::Cat; 
     Cat *ginger = new Cat("ginger"), 
         *tuxedo = new Cat("tuxedo");
     ginger->tap(*tuxedo);

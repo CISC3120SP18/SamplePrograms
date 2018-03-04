@@ -2,8 +2,8 @@
 
 /**
  * automatic storage:
- *  the context where the Cat objects indicates  they are allocated in the
- *  stack.
+ *  the context where the Cat objects are determines that they are allocated in
+ *  the stack.
  */
 using Edu::Brooklyn::Cat;
 

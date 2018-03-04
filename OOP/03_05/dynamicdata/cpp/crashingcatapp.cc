@@ -1,7 +1,8 @@
 #include "cat.h"
 
+using Edu::Brooklyn::Cat; 
+
 int main(int argc, char* argv[]) {
-    using Edu::Brooklyn::Cat; 
     Cat ginger("ginger");
     Cat tuxedo("tuxedo");
     Cat *catPtr;
