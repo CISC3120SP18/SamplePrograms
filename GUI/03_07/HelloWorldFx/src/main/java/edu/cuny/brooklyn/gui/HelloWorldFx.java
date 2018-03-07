@@ -25,6 +25,12 @@ public class HelloWorldFx extends Application {
 		
 		// EventHandler is a functional interface, so we can,
 //		btn.setOnAction(event -> System.out.println("Hello World!"));
+		
+		// To allow the Button responses to the ENTER key, we need to 
+		// give the "focus" to the button. You can uncomment this, 
+		// and use the ENTER key in addition to the mouse click to
+		// trigger ActionEvent
+//		btn.setDefaultButton(true);
 
 		StackPane root = new StackPane();
 		root.getChildren().add(btn);
