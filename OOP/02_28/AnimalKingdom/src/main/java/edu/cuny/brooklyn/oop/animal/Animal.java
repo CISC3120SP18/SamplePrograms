@@ -3,7 +3,7 @@ package edu.cuny.brooklyn.oop.animal;
 public abstract class Animal {
 	private String name;
 	
-	protected Animal(String name) {
+	Animal(String name) {
 		this.name = name;
 	}
 	
