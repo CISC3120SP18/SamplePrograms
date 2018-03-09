@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -29,7 +30,7 @@ public class LayoutsFXApp extends Application {
 
 	private Scene buildMainScene(Stage demoStage) {
 		final Class<?>[] layoutClasses = { HBox.class, VBox.class, TilePane.class, GridPane.class, FlowPane.class,
-				AnchorPane.class, StackPane.class };
+				AnchorPane.class, StackPane.class, BorderPane.class };
 		final double widthOfScene = 850;
 		final double heightOfScene = 400;
 
@@ -61,6 +62,8 @@ public class LayoutsFXApp extends Application {
 			scene = buildAnchorPaneLayoutScene();
 		} else if (layoutClazz.isAssignableFrom(StackPane.class)) {
 			scene = buildStackPaneLayoutScene();
+		} else if (layoutClazz.isAssignableFrom(BorderPane.class)) {
+			scene = buildBorderPaneLayoutScene();
 		}
 
 		Stage demoStage = new Stage();
@@ -182,5 +185,21 @@ public class LayoutsFXApp extends Application {
 		stackPane.getChildren().add(new Button("Submit"));
 
 		return new Scene(stackPane, widthOfScene, heightOfScene);
+	}
+	
+	private Scene buildBorderPaneLayoutScene() {
+		final double numOfTextFields = 4;
+		final double widthOfScene = 850;
+		final double heightOfScene = 400;
+
+		BorderPane borderPane = new BorderPane();
+		VBox vbox = new VBox();
+		for (int i = 0; i < numOfTextFields; i++) {
+			vbox.getChildren().add(new TextField("Course # " + i));
+		}
+		borderPane.setCenter(vbox);
+		borderPane.setRight(new Button("Submit"));
+
+		return new Scene(borderPane, widthOfScene, heightOfScene);
 	}
 }
