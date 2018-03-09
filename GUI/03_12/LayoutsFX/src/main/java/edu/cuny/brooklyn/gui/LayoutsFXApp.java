@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -193,6 +194,9 @@ public class LayoutsFXApp extends Application {
 		final double heightOfScene = 400;
 
 		BorderPane borderPane = new BorderPane();
+		borderPane.setTop(new Label("Add Classes"));
+		borderPane.setLeft(new Label("Using Course Numbers"));
+		borderPane.setBottom(new Label("This is a demo"));
 		VBox vbox = new VBox();
 		for (int i = 0; i < numOfTextFields; i++) {
 			vbox.getChildren().add(new TextField("Course # " + i));
