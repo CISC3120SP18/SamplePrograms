@@ -45,6 +45,7 @@ public class EventProcessingFXApp extends Application {
 		// default event capturing and bubbling chain
 		// event capturing: from root to leaf, invokes event-filter method 
 		primaryStage.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+			sb.setLength(0);
 			sb.append("captured at primaryStage");
 			System.out.println("event filter: mouse clicked: source -> target:" + e.getSource() + "->" + e.getTarget());
 			// e.consume();
