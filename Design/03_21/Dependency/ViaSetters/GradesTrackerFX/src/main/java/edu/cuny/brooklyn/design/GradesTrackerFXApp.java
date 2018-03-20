@@ -8,6 +8,19 @@ import edu.cuny.brooklyn.design.view.EnterStudentView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/*
+ * TODO:
+ *		The application has three different views. However, when the application switches from
+ *		one view to another, it does not display the student's name even after the user has
+ *		entered it. 
+ *		
+ *		Revise the application so that the Student's name is displayed on the top of the view,
+ *		for which, you need to,
+ *		(1) add a Label to the top of the AddCourseView and the ShowGPAView
+ *		(2) add necessary dependencies via the Setter method (if needed)
+ *		(3) display student's name on the top of the two views. 
+ */
+
 public class GradesTrackerFXApp extends Application {
 	private final static Logger LOGGER = LoggerFactory.getLogger(GradesTrackerFXApp.class);
 	
