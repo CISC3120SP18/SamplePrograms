@@ -14,11 +14,7 @@ public class EnterStudentView {
 	private GridPane pane;	// root of the scene graph
 	private Scene scene;
 	
-	public EnterStudentView(TranscriptService transcriptService, Stage nextStage) {
-		if (transcriptService == null) {
-			throw new IllegalArgumentException("TranscriptService must not be null");
-		}
-		this.transcriptService = transcriptService;
+	public EnterStudentView(Stage nextStage) {
 		pane = new GridPane();
 		pane.setHgap(ViewSettings.GRID_GAP);
 		pane.setVgap(ViewSettings.GRID_GAP);
@@ -38,7 +34,13 @@ public class EnterStudentView {
 		scene = new Scene(pane, ViewSettings.SCENE_WIDTH, ViewSettings.SCENE_HEIGHT);
 	}
 	
-
+	public void setTranscriptService(TranscriptService transcriptService) {
+		if (transcriptService == null) {
+			throw new IllegalArgumentException("TranscriptService must not be null.");
+		}
+		this.transcriptService = transcriptService;
+	}
+	
 
 	public void showOn(Stage stage) {
 		stage.setTitle("GradesTracker - Enter student's name");
@@ -49,10 +51,17 @@ public class EnterStudentView {
 	private void enterName(TextField nameField, Stage stage) {
 		String name = nameField.getText();
 		if (!name.isEmpty()) {
+			validateServiceState();
 			transcriptService.setName(name);
 			AddCourseView addCourseView = new AddCourseView(stage);
 			addCourseView.showOn(stage);
 		}
 	}
-
+	
+	
+	private void validateServiceState() {
+		if (transcriptService == null) {
+			throw new IllegalArgumentException("TranscriptService must not be null.");
+		}
+	}
 }

@@ -23,7 +23,7 @@ public class AddCourseView {
 	private Scene scene;
 
 	public AddCourseView(Stage stage) {
-		transcriptService = new TranscriptService();
+		transcriptService =  new TranscriptService();
 		pane = new GridPane();
 		scene = new Scene(pane, ViewSettings.SCENE_WIDTH, ViewSettings.SCENE_HEIGHT);
 		
@@ -59,21 +59,19 @@ public class AddCourseView {
 		stage.setTitle("GradesTracker - Add courses and grades.");
 		stage.show();
 	}
-
-
 	
 	private void submitCourses(GridPane pane, Stage nextStage) {
-		addCourses(pane, nextStage);
-		
+		addCourses(pane);
 		/*
 		 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		 *  Why do we need to build this every time? How can we not to?
 		 */
-		ShowGPAView showGPAView = new ShowGPAView(transcriptService);
+		ShowGPAView showGPAView = new ShowGPAView();
+		showGPAView.setTranscriptService(transcriptService);
 		showGPAView.showOn(nextStage);
 	}
 	
-	private void addCourses(GridPane pane, Stage nextStage) {
+	private void addCourses(GridPane pane) {
 		Course[] courses = new Course[ViewSettings.NUMBER_OF_COURSES];
 		boolean[] validCourses = new boolean[ViewSettings.NUMBER_OF_COURSES];
 		for (int i=0; i<ViewSettings.NUMBER_OF_COURSES; i++) {
@@ -116,7 +114,8 @@ public class AddCourseView {
 
 	private void addMoreCourses(GridPane pane, Stage nextStage, Scene scene) {
 		LOGGER.debug("called addMoreCourses ...");
-		addCourses(pane, nextStage);
+		addCourses(pane);
+
 		for (Node child : pane.getChildren()) {
 			Integer column = GridPane.getColumnIndex(child);
 			Integer row = GridPane.getRowIndex(child);
@@ -147,6 +146,7 @@ public class AddCourseView {
 	private int getCourseIndex(int row) {
 		return row - ViewSettings.COURSE_ROW_START;
 	}
+
 
 	
 }

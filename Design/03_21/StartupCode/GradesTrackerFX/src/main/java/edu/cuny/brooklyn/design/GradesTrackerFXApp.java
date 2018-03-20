@@ -66,13 +66,13 @@ public class GradesTrackerFXApp extends Application {
 			pane.getColumnConstraints().add(new ColumnConstraints(COLUMN_WIDTH)); // column 0 is 100 wide
 		}
 
-		pane.add(new Label("Name"), 2, 2);
+		pane.add(new Label("Name"), 1, 2);
 		TextField nameField = new TextField();
-		pane.add(nameField, 3, 2);
+		pane.add(nameField, 2, 2);
 
 		Button confirmButton = new Button("OK");
 		confirmButton.setOnAction(e -> enterName(nameField, nextStage, nextScene));
-		pane.add(confirmButton, 3, 4);
+		pane.add(confirmButton, 2, 4);
 
 		Scene scene = new Scene(pane, SCENE_WIDTH, SCENE_HEIGHT);
 		return scene;
@@ -100,7 +100,7 @@ public class GradesTrackerFXApp extends Application {
 		}
 		
 		Button buttonSubmit = new Button("Submit");
-		buttonSubmit.setOnAction(e -> submitCourses(numOfCoursesToEnter, pane, nextStage));
+		buttonSubmit.setOnAction(e -> submitCourses(pane, nextStage));
 		Button buttonMoreCourses = new Button("More Courses...");
 		buttonMoreCourses.setOnAction(e -> addMoreCourses(pane, nextStage, scene));
 		
@@ -133,34 +133,10 @@ public class GradesTrackerFXApp extends Application {
 		return scene;
 	}
 
-	
-	
-	private void addMoreCourses(GridPane pane, Stage nextStage, Scene scene) {
-		LOGGER.debug("called addMoreCourses ...");
-		for (Node child : pane.getChildren()) {
-			Integer column = GridPane.getColumnIndex(child);
-			Integer row = GridPane.getRowIndex(child);
-			if (column != null && row != null && isCourseRow(row) && isCourseColumn(column)) {
-				((TextField) child).setText("");
-			}
-		}
-		nextStage.setScene(scene);
-		nextStage.setTitle("GradesTracker - Add more courses and grades.");
-		nextStage.show();
-	}
-	
-	private boolean isCourseRow(int row) {
-		return row >= COURSE_ROW_START && row <= COURSE_ROW_START + NUMBER_OF_COURSES;
-	}
-	
-	private boolean isCourseColumn(int column) {
-		return column >= COURSE_COLUMN_START && column <= COURSE_COLUMN_START + COURSE_FIELD_NUMBER;
-	}
-
-	private void submitCourses(int numOfCoursesToEnter, GridPane pane, Stage nextStage) {
-		Course[] courses = new Course[numOfCoursesToEnter];
-		boolean[] validCourses = new boolean[numOfCoursesToEnter];
-		for (int i=0; i<numOfCoursesToEnter; i++) {
+	private void addCourses(GridPane pane, Stage nextStage) {
+		Course[] courses = new Course[NUMBER_OF_COURSES];
+		boolean[] validCourses = new boolean[NUMBER_OF_COURSES];
+		for (int i=0; i<NUMBER_OF_COURSES; i++) {
 			validCourses[i] = true;
 		}
 		
@@ -189,7 +165,8 @@ public class GradesTrackerFXApp extends Application {
 			}
 		}
 		
-		for (int i=0; i<numOfCoursesToEnter; i++) {
+		
+		for (int i=0; i<NUMBER_OF_COURSES; i++) {
 			if (validCourses[i]) {
 				transcriptService.addCourse(courses[i]);
 				LOGGER.debug("Added to the transcript the course: " + courses[i].toString()
@@ -197,6 +174,35 @@ public class GradesTrackerFXApp extends Application {
 			}
 		}
 		
+	}
+	
+	
+	private void addMoreCourses(GridPane pane, Stage nextStage, Scene scene) {
+		LOGGER.debug("called addMoreCourses ...");
+		addCourses(pane, nextStage);
+		for (Node child : pane.getChildren()) {
+			Integer column = GridPane.getColumnIndex(child);
+			Integer row = GridPane.getRowIndex(child);
+			if (column != null && row != null && isCourseRow(row) && isCourseColumn(column)) {
+				((TextField) child).setText("");
+			}
+		}
+		nextStage.setScene(scene);
+		nextStage.setTitle("GradesTracker - Add more courses and grades.");
+		nextStage.show();
+	}
+	
+	private boolean isCourseRow(int row) {
+		return row >= COURSE_ROW_START && row <= COURSE_ROW_START + NUMBER_OF_COURSES;
+	}
+	
+	private boolean isCourseColumn(int column) {
+		return column >= COURSE_COLUMN_START && column <= COURSE_COLUMN_START + COURSE_FIELD_NUMBER;
+	}
+
+	private void submitCourses(GridPane pane, Stage nextStage) {
+		addCourses(pane, nextStage);
+
 		/*
 		 * Why do we need to build this every time?
 		 */

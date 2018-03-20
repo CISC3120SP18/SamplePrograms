@@ -9,16 +9,12 @@ import javafx.stage.Stage;
 public class ShowGPAView {
 	private TranscriptService transcriptService;
 	private GridPane pane; // root of the scene graph
-	private Scene scene; 
+	private Scene scene;
 	private Label[] gradeValues;
 	
-	public ShowGPAView(TranscriptService transcriptService) {
-		if (transcriptService == null) {
-			throw new IllegalArgumentException("TranscriptService must not be null");
-		}
-		this.transcriptService = transcriptService;
-
+	public ShowGPAView() {
 		pane = new GridPane();
+		
 		pane.setHgap(ViewSettings.GRID_GAP);
 		pane.setVgap(ViewSettings.GRID_GAP);
 		pane.setPadding(ViewSettings.PADDING);
@@ -37,13 +33,27 @@ public class ShowGPAView {
 
 		scene = new Scene(pane, ViewSettings.SCENE_WIDTH, ViewSettings.SCENE_HEIGHT);
 	}
+
+	public void setTranscriptService(TranscriptService transcriptService) {
+		if (transcriptService == null) {
+			throw new IllegalArgumentException("TranscriptService must not be null.");
+		}
+		this.transcriptService = transcriptService;
+	}
 	
 	public void showOn(Stage stage) {
+		validateTranscriptServiceState();
 		transcriptService.updateGPA(); // what if we forget to call this? 
 		updateView();
 		stage.setScene(scene);
 		stage.setTitle("GradesTracker: showing GPA");
 		stage.show();
+	}
+	
+	private void validateTranscriptServiceState() {
+		if (transcriptService == null) {
+			throw new IllegalArgumentException("TranscriptService must not be null.");
+		}
 	}
 	
 	private void updateView() {
