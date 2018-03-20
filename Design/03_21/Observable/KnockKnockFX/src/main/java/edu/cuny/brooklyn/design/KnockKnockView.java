@@ -14,6 +14,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/*
+ * TODO 2:
+ * 		(1) add a RandomNumberObservable instance variable, and instantiate it in the constructor
+ * 		(2) add a getRandomNumberObervable method
+ * TODO 4:
+ * 		(1) display the random number coming from the observable in both views (javabean & javahouse)
+ * TODO 5:
+ *		(1) when processInput, be sure to call randomNumberObservable.makeRandomNumber("RN");
+ * TODO 6:
+ * 		(1) revise the update method so that the random number will be displayed
+ */
 public class KnockKnockView implements Observer {
 	private final static Logger LOGGER = LoggerFactory.getLogger(KnockKnockView.class);
 	private String name;
@@ -22,6 +33,7 @@ public class KnockKnockView implements Observer {
 	private Label textHistory;
 	private TextField textInput;
 	private InputObservable inputObservable;
+	
 	
 	public KnockKnockView(String name) {
 		this.name = name;
@@ -56,17 +68,17 @@ public class KnockKnockView implements Observer {
 		textInput.clear();
 	}
 
-	public Observable getObservable() {
+	public Observable getInputMsgObservable() {
 		return inputObservable;
 	}
-
+	
 	@Override
 	public void update(Observable obs, Object type) {
-		String msg = ((InputObservable) obs).getInput();
-		LOGGER.debug("KnockKnockView " + name + " received a notification with message = " + msg);
 		String history = textHistory.getText();
 		String obversableType = (String) type;
 		if (obversableType.equals("JavaHouse")) { // javabean observes javahouse
+			String msg = ((InputObservable) obs).getInput();
+			LOGGER.debug("KnockKnockView " + name + " received a notification with message = " + msg);
 			LOGGER.debug("JavaBean processing input");
 			history = history + "\n" + "JavaHouse -> JavaBean: " + msg;
 			textHistory.setText(history);
@@ -76,6 +88,8 @@ public class KnockKnockView implements Observer {
 				processInput("Java Bean in a JRE!");
 			}
 		} else if (obversableType.equals("JavaBean")) { // javahouse observes javabean
+			String msg = ((InputObservable) obs).getInput();
+			LOGGER.debug("KnockKnockView " + name + " received a notification with message = " + msg);
 			LOGGER.debug("JavaHouse processing input");
 			history = history + "\n" + "JavaBean -> JavaHouse: " + msg;
 			textHistory.setText(history);
@@ -84,6 +98,6 @@ public class KnockKnockView implements Observer {
 			} else if (msg.equals("Java Bean")) {
 				processInput("Java Bean, who?");
 			}
-		}
+		} 
 	}
 }
