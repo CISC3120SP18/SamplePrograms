@@ -12,7 +12,7 @@ main functionality is to compute an individual's GPA. It has three "views",
 The code contains objects representing courses and other data, and these
 objects must be passed to the views. In other words, the views depend
 on these "data" objects. The primary question is, how we provide these
-"data" objects to the view. 
+"data" objects to the views. 
 
 In addition, how are the views are updated when the underlying "data"
 objects are updated? 
@@ -34,8 +34,8 @@ The emphasis is given to the second topic, for which, we explore
 a few mechanisms including
 - Not to use the dependency injection design pattern
 -  Use the dependency injection design pattern
-  - Via setter methods
-  - Via constructor methods
-  - Via inheritance (implementing interface or extending a class)
+  -  Via setter methods
+  -  Via constructor methods
+  -  Via inheritance (implementing interface or extending a class)
 
 
