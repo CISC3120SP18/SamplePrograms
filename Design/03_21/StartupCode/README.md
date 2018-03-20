@@ -34,8 +34,8 @@ The emphasis is given to the second topic, for which, we explore
 a few mechanisms including
 - Not to use the dependency injection design pattern
 -  Use the dependency injection design pattern
-  -  Via setter methods
-  -  Via constructor methods
-  -  Via inheritance (implementing interface or extending a class)
+   -  Via setter methods
+   -  Via constructor methods
+   -  Via inheritance (implementing interface or extending a class)
 
 
