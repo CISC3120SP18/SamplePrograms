@@ -2,13 +2,10 @@ package edu.cuny.brooklyn.design;
 
 import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javafx.concurrent.Task;
 
 public class PiEstimatorTask extends Task<PiEstimatorState>{
-	private final static Logger LOGGER = LoggerFactory.getLogger(PiEstimatorTask.class);
+	// private final static Logger LOGGER = LoggerFactory.getLogger(PiEstimatorTask.class);
 	
 	private final long numOfPoints;
 	private final Random rngX;
@@ -47,12 +44,6 @@ public class PiEstimatorTask extends Task<PiEstimatorState>{
 		super.succeeded();
 		double pi = (double) getValue().getNumOfAccepted() / (double) numOfPoints * 4.0;
 		updateMessage(Double.toString(pi));
-		LOGGER.debug("completed running PI estimator in background ...");
 	}
-	
-	@Override
-	protected void cancelled() {
-		super.cancelled();
-		LOGGER.debug("Pi estimator task is canceled ...");
-	}
+
 }
