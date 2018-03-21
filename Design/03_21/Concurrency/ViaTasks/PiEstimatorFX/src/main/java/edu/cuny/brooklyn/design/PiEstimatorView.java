@@ -21,6 +21,13 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/*
+ * TODO:
+ * 		(1) add a cancel button to the view, initially make the button invisible. 
+ * 		(2) after the task starts running, make the button visible
+ * 		(3) add an event handler to the button to cancel the running task. 
+ */
+
 public class PiEstimatorView {
 	private final static Logger LOGGER = LoggerFactory.getLogger(PiEstimatorView.class);
 	private Scene scene;
@@ -98,7 +105,7 @@ public class PiEstimatorView {
 		productResult = new Label();
 		pane.add(productResult, 1, 18);
 		productButton = new Button("Multiply");
-		pane.add(productButton,  0,  19, 2, 1);
+		pane.add(productButton,  0, 19, 2, 1);
 		
 		canvas = new Canvas(600, 600);
 		hbox.getChildren().addAll(canvas, pane);
@@ -118,6 +125,7 @@ public class PiEstimatorView {
 		startButton.setOnAction(e -> estimatePi(null));
 		startButtonWithGraph.setOnAction(e->estimatePi(gc));
 		productButton.setOnAction(e -> doMultiply());
+		
 	}
 
 	public void showOn(Stage stage) {
@@ -147,6 +155,8 @@ public class PiEstimatorView {
 		
 		LOGGER.debug("Start running PI estimator ...");
 		
+		resetGraph();
+		
 		Task<PiEstimatorState> piTask = new PiEstimatorTask(numOfPoints, seedX, seedY);
 		progressBar.progressProperty().bind(piTask.progressProperty());
 		piValue.textProperty().bind(piTask.messageProperty());
@@ -156,7 +166,7 @@ public class PiEstimatorView {
 		Thread th = new Thread(piTask);
 		th.setDaemon(true);
 		th.start();
-
+		
 		LOGGER.debug("running PI estimator in background ...");
 	}
 
@@ -187,5 +197,16 @@ public class PiEstimatorView {
 		int h = (int)(state.getY() * canvas.getHeight());
 		// LOGGER.debug("x = " + state.getX() + ", y = " + state.getY() + " w = " + w + ", h = " + h);
 		gc.fillRect(w, h, 1,  1);
+	}
+	
+	private void resetGraph() {
+		gc.setFill(Color.WHITE);
+		gc.fillRect(0,  0,  canvas.getWidth(), canvas.getHeight());
+		gc.beginPath();
+		gc.setStroke(Color.BLACK);
+		gc.moveTo(0,  0);
+		gc.arc(0, 0, canvas.getWidth(), canvas.getWidth(), 270, 90);
+		gc.closePath();
+		gc.stroke();
 	}
 }
