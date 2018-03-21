@@ -115,8 +115,8 @@ public class PiEstimatorView {
 		
 		scene = new Scene(hbox);
 		
-		startButton.setOnAction(e -> estimatePi());
-		startButtonWithGraph.setOnAction(e->estimatePi());
+		startButton.setOnAction(e -> estimatePi(null));
+		startButtonWithGraph.setOnAction(e->estimatePi(gc));
 		productButton.setOnAction(e -> doMultiply());
 	}
 
@@ -126,7 +126,7 @@ public class PiEstimatorView {
 		stage.show();
 	}
 	
-	private void estimatePi() {
+	private void estimatePi(GraphicsContext gc) {
 		String fieldText = numOfPointsField.getText();
 		long numOfPoints = 1000000000l;
 		if (!fieldText.isEmpty()) {
@@ -147,9 +147,12 @@ public class PiEstimatorView {
 		
 		LOGGER.debug("Start running PI estimator ...");
 		
-		Task<Double> piTask = new PiEstimatorTask(numOfPoints, seedX, seedY);
+		Task<PiEstimatorState> piTask = new PiEstimatorTask(numOfPoints, seedX, seedY);
 		progressBar.progressProperty().bind(piTask.progressProperty());
 		piValue.textProperty().bind(piTask.messageProperty());
+		if (gc != null) {
+			piTask.valueProperty().addListener((obsv, oldv, newv) -> plotPoint(newv));
+		}
 		Thread th = new Thread(piTask);
 		th.setDaemon(true);
 		th.start();
@@ -171,5 +174,18 @@ public class PiEstimatorView {
 		}
 		double product = operand1 * operand2;
 		productResult.setText(Double.toString(product));
+	}
+	
+	private void plotPoint(PiEstimatorState state) {
+		if (state.getX() < 0. || state.getY() < 0.) return;
+		if (state.isAccepted()) {
+			gc.setFill(Color.RED);
+		} else {
+			gc.setFill(Color.BLUE);
+		}
+		int w = (int)(state.getX() * canvas.getWidth());
+		int h = (int)(state.getY() * canvas.getHeight());
+		// LOGGER.debug("x = " + state.getX() + ", y = " + state.getY() + " w = " + w + ", h = " + h);
+		gc.fillRect(w, h, 1,  1);
 	}
 }

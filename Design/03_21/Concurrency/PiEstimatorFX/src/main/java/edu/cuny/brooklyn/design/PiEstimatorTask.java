@@ -4,7 +4,8 @@ import java.util.Random;
 
 import javafx.concurrent.Task;
 
-public class PiEstimatorTask extends Task<Double>{
+public class PiEstimatorTask extends Task<PiEstimatorState>{
+	// private final static Logger LOGGER = LoggerFactory.getLogger(PiEstimatorTask.class);
 	
 	private final long numOfPoints;
 	private final Random rngX;
@@ -17,7 +18,7 @@ public class PiEstimatorTask extends Task<Double>{
 	}
 	
 	@Override
-	protected Double call() throws Exception {
+	protected PiEstimatorState call() throws Exception {
 		long accepted = 0;
 		for (long i = 0; i < numOfPoints; i++) {
 			if (isCancelled()) {
@@ -26,19 +27,23 @@ public class PiEstimatorTask extends Task<Double>{
 			
 			double x = rngX.nextDouble();
 			double y = rngY.nextDouble();
+			boolean isAccepted = false;
 			if (x * x + y * y < 1.0) {
 				accepted++;
+				isAccepted = true;
 			} 
 			updateProgress(i, numOfPoints-1);
-			updateValue((double)accepted/(double)numOfPoints * 4.0);
+			updateValue(new PiEstimatorState(x, y, isAccepted, accepted));
+			// LOGGER.debug("x = " + x + ", y = " + y);
 		}
-		return (double)accepted/(double)numOfPoints * 4.0;
+		return new PiEstimatorState(-1., -1., false, accepted);
 	}
 	
 	@Override
 	protected void succeeded() {
 		super.succeeded();
-		updateMessage(Double.toString(getValue()));
+		double pi = (double) getValue().getNumOfAccepted() / (double) numOfPoints * 4.0;
+		updateMessage(Double.toString(pi));
 	}
 
 }
