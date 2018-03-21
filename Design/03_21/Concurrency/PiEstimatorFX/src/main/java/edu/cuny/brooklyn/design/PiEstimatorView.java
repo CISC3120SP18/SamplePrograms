@@ -3,7 +3,6 @@ package edu.cuny.brooklyn.design;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -117,7 +116,7 @@ public class PiEstimatorView {
 		scene = new Scene(hbox);
 		
 		startButton.setOnAction(e -> estimatePi());
-		startButtonWithGraph.setOnAction(e->estimatePiWithGraph());
+		startButtonWithGraph.setOnAction(e->estimatePi());
 		productButton.setOnAction(e -> doMultiply());
 	}
 
@@ -127,7 +126,7 @@ public class PiEstimatorView {
 		stage.show();
 	}
 	
-	private void estimatePi(GraphicsContext gc) {
+	private void estimatePi() {
 		String fieldText = numOfPointsField.getText();
 		long numOfPoints = 1000000000l;
 		if (!fieldText.isEmpty()) {
@@ -147,50 +146,17 @@ public class PiEstimatorView {
 		}
 		
 		LOGGER.debug("Start running PI estimator ...");
-		PiEstimator estimator = new PiEstimator(numOfPoints, seedX, seedY);
-		estimator.setProgressBar(progressBar);
 		
-		if (gc != null) {
-			gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-			gc.beginPath();
-			gc.setStroke(Color.BLACK);
-			gc.moveTo(0, 0);
-			gc.arc(0, 0, canvas.getWidth(), canvas.getWidth(), 270, 90);
-			gc.closePath();
-			gc.stroke();
-		}
-		double pi = estimator.run(gc, canvas.getWidth(), canvas.getHeight());
-		
-		Platform.runLater(() ->	piValue.setText(Double.toString(pi)));
-		LOGGER.debug("Done running PI estimator ...");
-	}
-	
+		Task<Double> piTask = new PiEstimatorTask(numOfPoints, seedX, seedY);
+		progressBar.progressProperty().bind(piTask.progressProperty());
+		piValue.textProperty().bind(piTask.messageProperty());
+		Thread th = new Thread(piTask);
+		th.setDaemon(true);
+		th.start();
 
-
-	private void estimatePi() {
-		LOGGER.debug("running estimatePi ...");
-		Task<Void> piTask = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				estimatePi(null);
-				return null;
-			}
-		};
-		new Thread(piTask).start();
+		LOGGER.debug("running PI estimator in background ...");
 	}
 
-
-	private void estimatePiWithGraph() {
-		LOGGER.debug("running estimatePiWithGraph ...");
-		Task<Void> piTask = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				estimatePi(gc);
-				return null;
-			}
-		};
-		new Thread(piTask).start();
-	}
 
 	private void doMultiply() {
 		String fieldText = operand1Field.getText();
