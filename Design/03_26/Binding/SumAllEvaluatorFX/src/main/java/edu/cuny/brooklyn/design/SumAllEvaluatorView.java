@@ -1,14 +1,12 @@
 package edu.cuny.brooklyn.design;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,10 +23,10 @@ import javafx.stage.Stage;
 public class SumAllEvaluatorView {
 	private final static Logger LOGGER = LoggerFactory.getLogger(SumAllEvaluatorView.class);
 	private Scene scene;
-	private List<StringProperty> inputList;
+	private ArrayList<StringProperty> inputList;
 	
 	public SumAllEvaluatorView() {
-		inputList = new LinkedList<StringProperty>();
+		inputList = new ArrayList<StringProperty>();
 		
 		GridPane pane = new GridPane();
 		scene = new Scene(pane);
@@ -81,30 +79,36 @@ public class SumAllEvaluatorView {
 		Label result = new Label();
 		pane.add(result, 1, rowIndex);
 		
-		StringBinding binding = new StringBinding() {
-			{
-				super.bind(FXCollections.observableArrayList(inputList).toArray(new StringProperty[inputList.size()]));
-			}
-
-			@Override
-			protected String computeValue() {
-				LOGGER.debug("computeValue called");
-				double sum = 0.;
-				for (StringProperty e: inputList) {
-					String s = e.get();
-					if (!s.isEmpty()) {
-						double d = Double.parseDouble(s);
-						sum += d;
-					}
-				}
-				return Double.toString(sum);
-			}
-		};
+		StringBinding binding = new SumAllBinding(inputList);
 		
-		Button button = new Button("Compute");
-		pane.add(button, 1, rowIndex+1);
-		button.setOnAction(e -> {
-			result.setText(binding.get()); 
+		Button computeButton = new Button("Compute");
+		pane.add(computeButton, 1, rowIndex + 1);
+		computeButton.setOnAction(e -> {
+			result.setText(binding.get());
 		});
+		
+		// we may also get rid of the computeButton, bind 
+		// the result's textProperty to the binding
+//		result.textProperty().bind(binding);
+	}
+	
+	private class SumAllBinding extends StringBinding {
+		SumAllBinding(final ArrayList<StringProperty> inputList) {
+			super.bind(inputList.toArray(new StringProperty[inputList.size()]));
+		}
+
+		@Override
+		protected String computeValue() {
+			LOGGER.debug("computeValue called");
+			double sum = 0.;
+			for (StringProperty e: inputList) {
+				String s = e.get();
+				if (!s.isEmpty()) {
+					double d = Double.parseDouble(s);
+					sum += d;
+				}
+			}
+			return Double.toString(sum);
+		}
 	}
 }
