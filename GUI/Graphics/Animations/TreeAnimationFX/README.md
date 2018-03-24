@@ -10,6 +10,7 @@ is
 System.out.println("FPS " + com.sun.javafx.perf.PerformanceTracker.getSceneTracker(stage.getScene()).getInstantFPS());
 ```
 
+## Copyright Notice
 The original copyright notice from Oracle, Inc is as follows, 
 
 
