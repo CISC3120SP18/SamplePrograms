@@ -3,8 +3,7 @@
 This program is downloaded from the [Oracle JaveFX
 Tutorial](https://docs.oracle.com/javase/8/javafx/visual-effects-tutorial/tree-animation.htm).
 
-To compile in Java 9, you may need to comment out Line 115 in Main.java. The line
-is
+You may compile the application in Java 8 (a.k.a, 1.8) without any modification. To compile in Java 9, you may need to comment out Line 115 in Main.java. The line is
 
 ```
 System.out.println("FPS " + com.sun.javafx.perf.PerformanceTracker.getSceneTracker(stage.getScene()).getInstantFPS());
