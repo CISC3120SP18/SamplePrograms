@@ -20,6 +20,7 @@ public class CssDemoFXApp extends Application
     @Override
     public void start(Stage primaryStage) throws Exception {
         Button btnShowAlert = new Button("Show Confirmation Alert");
+        // use the class selector to select the confirmation-button class
         btnShowAlert.getStyleClass().add("confirmation-button");
         btnShowAlert.setOnAction((ActionEvent e) -> {
             Alert alert = new Alert(AlertType.CONFIRMATION, "", ButtonType.OK);
@@ -43,8 +44,11 @@ public class CssDemoFXApp extends Application
         GridPane.setConstraints(btnShowError, 0, 4, 8, 1);
         Scene scene = new Scene(grid, 800, 600);
         scene.getStylesheets().add("stylesheet.css");
-        //btnShowError.getStyleClass().clear();
-        //btnShowError.setId("blue-button");
+        // use class selector
+//        btnShowError.getStyleClass().add("button");
+//        btnShowError.getStyleClass().clear();
+        // use id selector
+//        btnShowError.setId("blue-button");
         btnShowError.setId("special-button");
 
 
