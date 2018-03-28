@@ -1,3 +1,9 @@
+/**
+ * This is the start-up code for an exercise. The application as is crashes when launched. 
+ * The tasks are described in the assignment description, see the class website, and the 
+ * Blackboard site to locate the assignment due date and  the assignment description. 
+ */
+
 package edu.cuny.brooklyn.gui;
 
 import javafx.application.Application;
