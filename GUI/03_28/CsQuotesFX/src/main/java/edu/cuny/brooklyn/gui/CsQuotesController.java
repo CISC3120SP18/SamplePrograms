@@ -3,7 +3,6 @@ package edu.cuny.brooklyn.gui;
 public class CsQuotesController {
 	private CsQuotesModel model;
 	private CsQuotesView view;
-	private int quoteIndex;
 	
 	public CsQuotesController(CsQuotesModel model, CsQuotesView view) {
 		this.model = model;
@@ -11,13 +10,13 @@ public class CsQuotesController {
 	}
 	
 	public void initialize(int startIndex) {
-		this.quoteIndex = startIndex;
+		model.setActiveQuoteIndex(startIndex);
 		view.updateView(startIndex);
 		view.getNextQuoteButton().setOnAction(e -> nextQuote());
 	}
 	
 	public void nextQuote() {
-		quoteIndex = (quoteIndex + 1) % model.getNumOfQuotes();
-		view.updateView(quoteIndex);
+		model.advanceActiveQuoteIndex();
+		view.updateView(model.getActiveQuoteIndex());
 	}
 }

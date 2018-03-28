@@ -11,6 +11,20 @@ public class CsQuotesModel {
 			"Edsger Dijkstra" };
 	private static final String[] PORTRAITS = { "alan_perlis.jpg", "alan_perlis.jpg", "don_knuth.jpg",
 			"edsger_dijkstra.jpg", "edsger_dijkstra.jpg" };
+	
+	private int activeQuoteIndex;
+	
+	public CsQuotesModel() {
+		activeQuoteIndex = 0;
+	}
+	
+	public void advanceActiveQuoteIndex() {
+		activeQuoteIndex = (activeQuoteIndex + 1) % getNumOfQuotes();
+	}
+	
+	public int getActiveQuoteIndex() {
+		return activeQuoteIndex;
+	}
 
 	public String getQuote(int index) {
 		return QUOTES[index];
@@ -26,5 +40,9 @@ public class CsQuotesModel {
 
 	public int getNumOfQuotes() {
 		return QUOTES.length;
+	}
+	
+	public void setActiveQuoteIndex(int activeQuoteIndex) {
+		this.activeQuoteIndex = activeQuoteIndex;
 	}
 }
