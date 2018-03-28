@@ -13,7 +13,7 @@ public class CsQuotesTimerController {
 		this.model = model;
 	}
 	
-	public void setTimer() {
+	public void startTimer() {
 		if (timer != null) {
 			timer.cancel();
 		} 

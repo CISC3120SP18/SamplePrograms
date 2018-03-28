@@ -51,7 +51,7 @@ public class CsQuotesController implements Serializable {
 
 
 	private void updateView(int quoteIndex) {
-		portraitHolder.setImage(new Image(model.getPortrait(quoteIndex), 300, 300, true, true));
+		portraitHolder.setImage(new Image(model.getPortrait(quoteIndex), 150, 180, true, true));
 		quoteTextLabel.setText(model.getQuote(quoteIndex) + "     --" + model.getAuthor(quoteIndex));
 	}
 

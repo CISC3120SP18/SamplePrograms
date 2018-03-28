@@ -22,7 +22,7 @@ public class CsQuotesFXApp extends Application {
 		controller.initialize(0);
 		
 		timerController = new CsQuotesTimerController(model);
-		timerController.setTimer();
+		timerController.startTimer();
 		
 		Scene mainScene = new Scene(view.getRoot(), INIT_MAIN_SCENE_WIDTH, INIT_MAIN_SCENE_HEIGHT);
 		primaryStage.setTitle(APP_TITLE);
