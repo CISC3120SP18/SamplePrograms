@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.text.NumberFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -29,7 +30,7 @@ public class FormattedOutputDemoCliApp {
 
 		List<Double> doubleList = new LinkedList<Double>();
 		for (int i = 0; i < 16; i++) {
-			doubleList.add(rng.nextDouble());
+			doubleList.add(rng.nextDouble()*1000000);
 		}
 
 		// System.out is a PrintStream, and we can use the format method
@@ -40,7 +41,10 @@ public class FormattedOutputDemoCliApp {
 
 		FormattedOutputDemoCliApp demo = new FormattedOutputDemoCliApp();
 		try {
+			// You may try different locale, e.g., Locale.FRANCE, Locale.GERMAN etc
 			demo.writeToTextFile("files/intlist.txt", Locale.getDefault(), StandardCharsets.UTF_8, intList);
+//			demo.writeToTextFile("files/intlist.txt", Locale.FRANCE, StandardCharsets.UTF_8, intList);
+//			demo.writeToTextFile("files/intlist.txt", Locale.GERMAN, StandardCharsets.UTF_8, intList);			
 			System.out.println("wrote files/intlist.txt.");
 		} catch (FileNotFoundException e) {
 			System.err.println("Cannot create files/intlist.txt for writing");
@@ -75,9 +79,11 @@ public class FormattedOutputDemoCliApp {
 	void writeToTextFile(String filename, Locale locale, Charset charset, List<? extends Number> numberList)
 			throws FileNotFoundException {
 		try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(filename), charset))) {
+			NumberFormat formatter = NumberFormat.getInstance(locale);
 			numberList.forEach(n -> {
-				String fmt = n instanceof Integer ? "%d\n" : "%f\n";
-				writer.format(locale, fmt, n);
+//				 String fmt = n instanceof Integer ? "%d%n" : "%f%n";
+//				 writer.format(locale, fmt, n);
+				writer.println(formatter.format(n));
 			});
 		}
 	}
