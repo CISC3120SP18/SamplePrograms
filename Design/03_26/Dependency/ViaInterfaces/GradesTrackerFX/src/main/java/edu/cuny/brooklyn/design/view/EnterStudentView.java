@@ -64,7 +64,7 @@ public class EnterStudentView {
 	
 	private void validateServiceState() {
 		if (transcriptService == null) {
-			throw new IllegalArgumentException("TranscriptService must not be null.");
+			throw new IllegalStateException("TranscriptService must not be null.");
 		}
 	}
 }

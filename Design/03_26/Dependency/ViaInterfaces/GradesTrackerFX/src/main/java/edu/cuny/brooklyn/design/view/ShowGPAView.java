@@ -45,7 +45,7 @@ public class ShowGPAView {
 	
 	private void validateTranscriptServiceState() {
 		if (transcriptService == null) {
-			throw new IllegalArgumentException("TranscriptService must not be null.");
+			throw new IllegalStateException("TranscriptService must not be null.");
 		}
 	}
 	

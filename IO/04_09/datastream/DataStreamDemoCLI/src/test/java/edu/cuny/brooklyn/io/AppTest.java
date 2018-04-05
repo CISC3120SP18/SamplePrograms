@@ -1,4 +1,4 @@
-package edu.cuny.brooklyn.cisc3120.fileio;
+package edu.cuny.brooklyn.io;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
