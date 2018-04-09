@@ -4,7 +4,8 @@
  * assignments are,
  * (1) TODO 1. Complete the readFile method in the SimpleHtmlEditor class
  * (2) TODO 2. Complete the saveTheFile method in the SimpleHtmlEditor class
- * (3) TODO 3. (Bonus) Add a section of the history of opened files in the 
+ * (3) TODO 3. Design and complete the Help|About menu functionality. 
+ * (4) TODO 4. (Bonus) Add a section of the history of opened files in the 
  *             File menu. 
  */
 
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 
 public class SimpleHtmlEditorApp extends Application {
 	private final static String FXML_MAIN_VIEW = "view/fxml_mainview.fxml";
-	private final static String APP_TITLE = "Simple Editor";
+	private final static String APP_TITLE = "Simple Html Editor";
 
 	public static void main(String[] args) {
 		launch(args);

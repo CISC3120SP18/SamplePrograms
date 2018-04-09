@@ -1,6 +1,11 @@
 /**
-	 TODO 3: this is a bonus requirement. 
-	 TODO 3 (a): save history. 
+	 TODO 3: complete the Help|About menu functionality. When a user
+	 		 clicks on the Help|ABout menu item, the application should
+	 		 display a short description of your choice to describe
+	 		 the application. You will complete the functionality.
+	 
+	 TODO 4: this is a bonus requirement. 
+	 TODO 4 (a): save history. 
 		 	Many application saves the history of opened files in the File menu.
 			See the Eclipse IDE's File menu for an example. 
 		 
@@ -14,7 +19,7 @@
 					https://docs.oracle.com/javase/tutorial/essential/environment/properties.html
 		 		(ii) what do you do if the file does not exist? 
 				(iii) how do you record the history? how many history entries do you wish to write?
-	TODO 3 (b): load history. 
+	TODO 4 (b): load history. 
 			This requires you to read the configuration file, and create necessary menu item
 			programmatically, and add event handler that opens the file for editing to each 
 			menu item. There are design choices, each has its advantage and disadvantage.
@@ -435,18 +440,17 @@ public class MainViewController {
 			contentChangedProperty.set(false);
 			prevContent = null;
 			editor.setOnMouseClicked(event -> checkContentEdited(editor));
+			editor.addEventFilter(KeyEvent.KEY_TYPED, event -> checkContentEdited(editor));
 			/*
 			 * You may wonder why we use an EventFilter instead of an EventHandler. We use
 			 * EventFilter because EventFilter does not consume the event. Imaging that you
 			 * replace the following by a EventHander, e.g., editor.setOnKeyTyped(event ->
-			 * checkContentEdited(editor)); you will not be ableto edit the content, because
+			 * checkContentEdited(editor)); you will not be able to edit the content, because
 			 * the above code consumes the KEY_TYPED event (the KEY_TYPED is gone).
 			 * 
 			 * See https://docs.oracle.com/javase/8/javafx/events-tutorial/events.htm for
 			 * more information.
 			 */
-
-			editor.addEventFilter(KeyEvent.KEY_TYPED, event -> checkContentEdited(editor));
 		}
 
 		public BooleanProperty contentChangedProperty() {
