@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+<!-- 		<Console name="Console" target="SYSTEM_OUT"> -->
+<!-- 			<PatternLayout -->
+<!-- 				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} %l - %msg%n" /> -->
+<!-- 		</Console> -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n" />
+        </Console>
+		<File name="LogFile" fileName="targetgame.log" immediateFlush="true"
+			append="false">
+			<PatternLayout
+				pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} %l - %msg%n" />
+		</File>
+		<!-- includeLocation="true" must be included below; otherwise %l does not 
+			work in the above -->
+		<Async name="ASYNCFILE" includeLocation="true">
+			<AppenderRef ref="LogFile" />
+		</Async>
+	</Appenders>
+	<Loggers>
+		<Logger name="edu.cuny.brooklyn.cisc3120" level="ALL"
+			additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="ASYNCFILE" />
+		</Logger>
+		<Root level="debug">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="ASYNCFILE" />
+		</Root>
+	</Loggers>
+</Configuration>
