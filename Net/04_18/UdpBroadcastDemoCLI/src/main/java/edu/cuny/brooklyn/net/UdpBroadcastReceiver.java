@@ -22,7 +22,7 @@ public class UdpBroadcastReceiver {
 		}
 
 		try (DatagramSocket socket = new DatagramSocket(port)) {
-
+			socket.setReuseAddress(true);
 			byte[] buf = new byte[BUFFER_SIZE];
 			DatagramPacket packet = new DatagramPacket(buf, buf.length);
 			socket.receive(packet);
