@@ -18,17 +18,12 @@ public class TcpMessengerOnewayClient {
 			SocketAddress serverSocketAddress = new InetSocketAddress(InetAddress.getByName(SERVER_ADDRESS),
 					SERVER_PORT);
 			socket.setReuseAddress(true);
-			socket.connect(serverSocketAddress);
-			try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-				String msg;
-				System.out.println("Client waiting for msg");
-				while ((msg = reader.readLine()) != null) {
-					System.out.println("Server: " + msg);
-					if (msg.equals("Bye bye")) {
-						break;
-					}
-				}
-			}
+			// TODO: 
+			//	1. connect to the server, get the socket
+			//	2. create a reader from the socket
+			//	3. repeatedly read lines of messages from the reader
+			//	4. print out the message received
+			//	5. if the message is "Bye bye", exit the loop and the application
 		}
 	}
 }
