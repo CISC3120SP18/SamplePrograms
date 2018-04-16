@@ -10,4 +10,12 @@ projects.
 - [02/20](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c06.pdf): OOP/02_20
 - [02/21](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c07.pdf): Test/02_21
 - [02/26](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c08.pdf): OOP/02_26
+- [02/28](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c09.pdf): OOP/02_28
+- [03/05](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c10.pdf): OOP/03_05
+- [03/07](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c11.pdf): GUI/03_07
+- [03/12](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c12.pdf): GUI/03_12
+- [03/28](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c16a.pdf): GUI/03_28
+- [03/28](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c16b.pdf): Error/03_28
+- [04/09](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c17.pdf): IO/04_09
+- [04/16](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c18.pdf): Net/04_16
 
