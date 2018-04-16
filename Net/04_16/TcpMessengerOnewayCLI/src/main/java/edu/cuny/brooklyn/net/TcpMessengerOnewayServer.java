@@ -32,6 +32,9 @@ public class TcpMessengerOnewayServer {
 					writer.println(msg);
 					writer.flush();
 					System.out.print("Enter Message ('Bye bye' to exit): ");
+					if (msg.equals("Bye bye")) {
+						break;
+					}
 				}
 			}
 		}
