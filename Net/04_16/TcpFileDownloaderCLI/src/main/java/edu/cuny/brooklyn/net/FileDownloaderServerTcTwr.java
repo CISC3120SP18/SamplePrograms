@@ -45,6 +45,7 @@ public class FileDownloaderServerTcTwr {
 			System.out.format("Server is listen to port %s at host %s%n", serverSocket.getLocalPort(),
 					serverSocket.getInetAddress());
 			socket = null;
+			System.out.println("Server is now waiting for connection.");
 			while ((socket = serverSocket.accept()) != null) {
 				socket.setReuseAddress(true);
 				/*
@@ -72,6 +73,7 @@ public class FileDownloaderServerTcTwr {
 						out.write((byte) c);
 					}
 				}
+				System.out.println("Server is now waiting for new connection.");
 			}
 		} catch (IOException e) {
 			LOGGER.error("File I/O or network I/O error.", e);
