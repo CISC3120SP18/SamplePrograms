@@ -72,7 +72,10 @@ public class FileDownloaderClientTc {
 			while ((c = in.read()) != -1) {
 				out.write((byte) c);
 			}
-
+			if (out != null) { 
+				out.close();
+				out = null;
+			}
 			System.out.println("File is downloaded to files/demo1/file1dup.txt");
 		} catch (IOException e) {
 			LOGGER.error("File I/O or network I/O error.", e);

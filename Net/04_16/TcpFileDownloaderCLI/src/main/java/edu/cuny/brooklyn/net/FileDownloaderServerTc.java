@@ -48,6 +48,7 @@ public class FileDownloaderServerTc {
 					serverSocket.getInetAddress());
 			socket = null;
 			while ((socket = serverSocket.accept()) != null) {
+				System.out.println("Connection established.");
 				socket.setReuseAddress(true);
 				/*
 				 * the socket returned by accept() represents a connection at the server and the
@@ -73,15 +74,16 @@ public class FileDownloaderServerTc {
 				while ((c = in.read()) != -1) {
 					out.write((byte) c);
 				}
-			}
-			/* close streams: why do we also close them in the finally block? is it necessary? */
-			if (out != null) {
-				out.close();
-				out = null;
-			}
-			if (in != null) {
-				in.close();
-				in = null;
+				/* close streams: why do we also close them in the finally block? is it necessary? */
+				if (out != null) {
+					out.close();
+					out = null;
+				}
+				if (in != null) {
+					in.close();
+					in = null;
+				}
+				System.out.println("Server completed transfering the file files/demo1/file1.txt, and closed the connection.");
 			}
 		} catch (IOException e) {
 			LOGGER.error("File I/O or network I/O error.", e);

@@ -13,7 +13,7 @@ public class TcpMessengerOnewayClient {
 	public final static int SERVER_PORT = 62110;
 
 	public static void main(String[] args) throws IOException {
-		System.out.println("Client stats.");
+		System.out.println("Client starts.");
 		try (Socket socket = new Socket()) {
 			SocketAddress serverSocketAddress = new InetSocketAddress(InetAddress.getByName(SERVER_ADDRESS),
 					SERVER_PORT);
