@@ -7,6 +7,6 @@ application.
 
 The subscriber sends a list of images whose paths are in a text file to a list
 of groups whose corresponding multicast addresses are in another text file. In
-addition, the name of the image list text file, and the multicast address text
-file are in a Java Properties file. 
+addition, the name of the image list text file and that of the multicast
+address text file are in a Java Properties file. 
 
