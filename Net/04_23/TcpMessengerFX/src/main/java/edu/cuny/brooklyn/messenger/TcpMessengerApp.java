@@ -3,7 +3,7 @@
  * improve design if we consider the observer pattern. How would
  * you go by it? 
  */
-package edu.cuny.brooklyn.net.messenger;
+package edu.cuny.brooklyn.messenger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

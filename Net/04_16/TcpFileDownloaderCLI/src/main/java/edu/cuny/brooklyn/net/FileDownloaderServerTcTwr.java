@@ -73,6 +73,7 @@ public class FileDownloaderServerTcTwr {
 						out.write((byte) c);
 					}
 				}
+				System.out.println("Server completed transfering the file files/demo1/file1.txt, and closed the connection.");
 				System.out.println("Server is now waiting for new connection.");
 			}
 		} catch (IOException e) {

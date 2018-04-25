@@ -17,8 +17,10 @@ public class TcpMessengerThreadedFullDuplexClient {
                     SERVER_PORT);
             socket.connect(serverSocketAddress);
             Thread inputThread = new Thread(new InputMsgHandlerRunnable("Client", socket));
+            inputThread.setDaemon(true);
             inputThread.start();
             Thread outputThread = new Thread(new OutputMsgHandlerRunnable("Client", socket));
+            outputThread.setDaemon(true);
             outputThread.start();
             // block the try-with-resources block before threads exit.
             inputThread.join();

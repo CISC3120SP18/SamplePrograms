@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
-    fx:controller="edu.cuny.brooklyn.cisc3120.netio.tcpmessenger.controller.TcpMessengerController">
+    fx:controller="edu.cuny.brooklyn.net.messenger.controller.TcpMessengerController">
    <rowConstraints>
       <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="300.0" />
       <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="300.0" />

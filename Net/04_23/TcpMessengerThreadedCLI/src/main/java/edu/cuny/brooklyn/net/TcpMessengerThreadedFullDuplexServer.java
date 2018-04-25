@@ -17,8 +17,10 @@ public class TcpMessengerThreadedFullDuplexServer {
                 serverBindAddress)) {
             try (Socket socketCommWithClient = listeningSocket.accept()) {
                 Thread inputThread = new Thread(new InputMsgHandlerRunnable("Server", socketCommWithClient));
+                inputThread.setDaemon(true);
                 inputThread.start();
                 Thread outputThread = new Thread(new OutputMsgHandlerRunnable("Server", socketCommWithClient));
+                outputThread.setDaemon(true);
                 outputThread.start();
                 // block the try-with-resources block before threads exit.
                 inputThread.join();

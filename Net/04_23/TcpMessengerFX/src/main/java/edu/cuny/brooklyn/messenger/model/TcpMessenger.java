@@ -99,6 +99,7 @@ public class TcpMessenger {
         outputStream = socket.getOutputStream();
         messengerMessageReader = new MessengerMessegeReader(userIdentity, socket, messageLine);
         inputThread = new Thread(messengerMessageReader);
+        inputThread.setDaemon(true);
         inputThread.start();
     }
     

@@ -65,7 +65,9 @@ public class TcpMessengerController {
                     Platform.runLater(() -> NotificationHelper.showListenerInterrupted());
                 }
             }});
+        listenerThread.setDaemon(true);
         listenerThread.start();
+
         
         messenger.getMessageLine()
             .messageLineProperty()
