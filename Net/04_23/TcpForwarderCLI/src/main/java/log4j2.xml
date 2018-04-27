@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %l - %msg%n" />
+		</Console>
+
+		<File name="ServerLogFile" fileName="server.log"
+			immediateFlush="true" append="false">
+			<PatternLayout
+				pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} %l - %msg%n" />
+		</File>
+		<!-- includeLocation="true" must be included below; otherwise %l does not 
+			work in the above -->
+		<Async name="SERVERASYNCFILE" includeLocation="true">
+			<AppenderRef ref="ServerLogFile" />
+		</Async>
+
+		<File name="ClientLogFile" fileName="client.log"
+			immediateFlush="true" append="false">
+			<PatternLayout
+				pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} %l - %msg%n" />
+		</File>
+		<!-- includeLocation="true" must be included below; otherwise %l does not 
+			work in the above -->
+		<Async name="CLIENTASYNCFILE" includeLocation="true">
+			<AppenderRef ref="ClientLogFile" />
+		</Async>
+
+		<File name="LogFile" fileName="all.log" immediateFlush="true"
+			append="false">
+			<PatternLayout
+				pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} %l - %msg%n" />
+		</File>
+		<!-- includeLocation="true" must be included below; otherwise %l does not 
+			work in the above -->
+		<Async name="ASYNCFILE" includeLocation="true">
+			<AppenderRef ref="LogFile" />
+		</Async>
+	</Appenders>
+	<Loggers>
+		<Logger name="edu.cuny.brooklyn.net.server" level="ALL"
+			additivity="false">
+			<AppenderRef ref="SERVERASYNCFILE" level="DEBUG" />
+			<AppenderRef ref="ASYNCFILE" level="ALL" />
+		</Logger>
+
+		<Logger name="edu.cuny.brooklyn.net.client" level="ALL"
+			additivity="false">
+			<AppenderRef ref="CLIENTASYNCFILE" level="DEBUG" />
+			<AppenderRef ref="ASYNCFILE" level="ALL" />
+		</Logger>
+
+		<Root level="ALL">
+			<AppenderRef ref="ASYNCFILE" level="ALL" />
+		</Root>
+	</Loggers>
+</Configuration>
+
