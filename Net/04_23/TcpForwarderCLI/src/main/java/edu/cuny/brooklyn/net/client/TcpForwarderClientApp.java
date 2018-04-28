@@ -21,34 +21,26 @@ public class TcpForwarderClientApp {
 			System.exit(-1);
 		}
 
-		try {
-			InetAddress inetAddress = InetAddress.getByName(args[0]);
-			int port = Integer.parseInt(args[1]);
-			SocketAddress inetSocketAddress = new InetSocketAddress(inetAddress, port);
-
-			try (Socket socket = new Socket()) {
-				socket.connect(inetSocketAddress);
-				
-				InputMessageHandler inRunnable = new InputMessageHandler(socket);
-				Thread inTh = new Thread(inRunnable);
-				inTh.setDaemon(true);
-				inTh.start();
-				
-				OutputMessageHandler outRunnable = new OutputMessageHandler(socket);
-				Thread outTh = new Thread(outRunnable);
-				outTh.setDaemon(true);
-				outTh.start();
-
-				outTh.join();
-			} catch (InterruptedException e) {
-				LOGGER.error("Threads interrupted.", e);
-			}
-
-		} catch (UnknownHostException e) {
-			System.err.println(args[0] + " is an unknown host.");
-		} catch (IOException e) {
-			System.err.println("I/O error: " + e.getMessage());
-		}
+		/*
+		 * TODO: create two threads to complete the application. One thread is to receive an input
+		 * 		from the Standard Input and send the message to the server via a TCP connection, and 
+		 * 		the other is to receive a message from	 the server, and displays it in the Standard
+		 * 		output. 
+		 * 
+		 *  	To complete the TODO, follow the steps below,
+		 *  	1. create an InetSocketAddress object from the two required command line arguments;
+		 *  		(the InetSocketAddress is the remote endpoint of a TCP connection, i.e., the
+		 *  		the server process the client (this process) is connects to)
+		 *  	2. create a socket object
+		 *  	3. connect to the server using the InetSocketAddress object created in Step 1
+		 *  	4. create a Thread object from the InputMessageHandler class (that is a Runnable),
+		 *  		and run/start the thread (this thread is to receive a messsage from the server,
+		 *  		and the "Input" means to "input" from the server);
+		 *  	5. create a Thread object from the OutputMessageHandler class (that is a Runnable),
+		 *  		and run/start the thread (this thread is to receive an input from the user
+		 *  		and send the input to the server, the "Output" means to "output" to the server.)
+		 *  	6. set up a barrier to wait for the OutputMessageHandler thread to die/exit. 
+		 */
 
 		System.out.println("TcpForwarderClientApp ends.");
 	}

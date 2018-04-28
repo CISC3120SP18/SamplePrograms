@@ -77,7 +77,7 @@ public class MsgForwardService {
 
 
 	public void stop() {
-		clientMap.forEach((id, client) -> client.stop()); 
+		clientMap.forEach((id, client) -> client.close()); 
 	}
 
 }

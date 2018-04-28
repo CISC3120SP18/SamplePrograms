@@ -53,7 +53,7 @@ public class ClientHandler implements Runnable {
 			if (msg != null && msg.equals(BYE_BYE_MSG)) {
 				running = false;
 				msgForwardService.remove(id);
-				stop();
+				close();
 				LOGGER.info("Client " + id + " said Bye bye, and removed the client from the listener.");
 			} else if (msg != null) {
 				msgForwardService.forwardMsg(id, msg);
@@ -75,17 +75,28 @@ public class ClientHandler implements Runnable {
 		msgForwardService = service;
 	}
 
-	public void stop() {
+	public void close() {
 		running = false;
-		try {
-			if (socket != null)
+		if (socket != null) {
+			try {
 				socket.close();
-			if (reader != null)
+			} catch (IOException e) {
+				LOGGER.error("Failed to close a socket/reader/writer: " + e.getMessage(), e);
+			}
+		}
+		if (reader != null) {
+			try {
 				reader.close();
-			if (writer != null)
+			} catch (IOException e) {
+				LOGGER.error("Failed to close a socket/reader/writer: " + e.getMessage(), e);
+			}
+		}
+		if (writer != null) {
+			try {
 				writer.close();
-		} catch (IOException e) {
-			LOGGER.error("Failed to close a socket/reader/writer: " + e.getMessage(), e);
+			} catch (IOException e) {
+				LOGGER.error("Failed to close a socket/reader/writer: " + e.getMessage(), e);
+			}
 		}
 	}
 
