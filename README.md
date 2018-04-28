@@ -19,5 +19,5 @@ projects.
 - [04/09](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c17.pdf): IO/04_09
 - [04/16](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c18.pdf): Net/04_16
 - [04/18](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c19.pdf): Net/04_18
-- [04/23](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c20.pdf): Net/04_23 and AIO/04_23
+- [04/23](https://huichen-cs.github.io/course/CISC3120/18SP/lecture/cisc3120_c20.pdf): Net/04_23, AIO/04_23, and NBIO/04_23
 
