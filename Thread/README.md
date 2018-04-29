@@ -1,6 +1,6 @@
 # Threads in Java
 
-There are a number of sample applicatoins that make uses of threads of some
+There are a number of sample applications that use threads of some
 kind.
 
  - [../Design/03_26/Concurrency](../Design/03_26/Concurrency)
