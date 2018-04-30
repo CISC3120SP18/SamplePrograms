@@ -1,0 +1,135 @@
+.hidden {
+    visibility: hidden;
+}
+
+#layoutcontainer {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 491px;
+    height: 420px;
+    border: 3px solid #3c3c3c;
+    padding: 0px;
+}
+
+#apptitle {
+    position: absolute;
+    display: block;
+    text-align: center;
+    left: 0;
+    top: 0;
+    width: 475px;
+    height: 45px;
+}
+
+#inoutfield {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 475px;
+    height: 45px;
+}
+
+#digit1 {
+    position: absolute;
+    left: 0;
+    top: 120px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit2 {
+    position: absolute;
+    left: 100px;
+    top: 120px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit3 {
+    position: absolute;
+    left: 200px;
+    top: 120px;
+    width: 90px;
+    height: 90px;
+}
+
+#opplus{
+    position: absolute;
+    left: 300px;
+    top: 120px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit4 {
+    position: absolute;
+    left: 400px;
+    top: 120px;
+    width: 90px;
+    height: 290px;
+}
+
+#digit5 {
+    position: absolute;
+    left: 0;
+    top: 220px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit6 {
+    position: absolute;
+    left: 100px;
+    top: 220px;
+    width: 90px;
+    height: 90px;
+}
+
+#opminus {
+    position: absolute;
+    left: 200px;
+    top: 220px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit7 {
+    position: absolute;
+    left: 300px;
+    top: 220px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit8 {
+    position: absolute;
+    left: 0;
+    top: 320px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit9 {
+    position: absolute;
+    left: 100px;
+    top: 320px;
+    width: 90px;
+    height: 90px;
+}
+
+#digit0 {
+    position: absolute;
+    left: 200px;
+    top: 320px;
+    width: 90px;
+    height: 90px;
+}
+
+#opequal {
+    position: absolute;
+    left: 300px;
+    top: 320px;
+    width: 90px;
+    height: 90px;
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>   <!-- required by HTML 5 -->
+<html lang="en">  <!-- this is a comment -->
+	<head>
+		  <title>Example HTML 5: HttpURLConnection</title>  <!-- required by HTML 5 -->
+			<meta charset="utf-8" />                          <!-- required by HTML 5 -->
+			<link type="text/css" rel="stylesheet" href="uicontrols.css"/>
+			<link type="text/css" rel="stylesheet" href="layout.css"/>
+	</head>
+	<style type="text/css">
+
+			.apptitle {
+					font-family: Arial, sans-serif;
+					font-size: 24px;
+			}
+
+			.textfield {
+					background-color: #a6b5c9; 
+					background-image:
+							linear-gradient(0deg, #303842 0%, #e0e0e0 10%, #fff 50%, #e0e0e0 90%, #303842 100%),
+							linear-gradient(90deg, #768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+					border-radius: 5px;
+					padding: 7px 7px 7px 7px;
+					color: #242d35;
+					font-family: Helvetica;
+					font-size: 12px;
+			 }
+
+			.button {
+					background-color: #a6b5c9; 
+					background-image:
+							linear-gradient(0deg, #303842 0%, #3e5577 20%, #fbfbfb 100%),
+							linear-gradient(90deg, #768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+					border-radius: 10px;
+					padding: 7px 30px 7px 30px;
+					color: #242d35;
+					font-family: "Helvetica";
+					font-size: 12px;
+			}
+
+			.button:hover {
+					background-color: #a6b5c9; 
+					background-image:
+							linear-gradient(180deg, #303842 0%, #3e5577 20%, #fbfbfb 100%),
+							linear-gradient(270deg, #768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+					border-radius: 10px;
+					padding: 7px 30px 7px 30px;
+					color: #242d35;
+					font-family: Helvetica, sans-serif;
+					font-size: 12px;
+			}
+
+			.button:active {
+					box-shadow: 2px 0 0 0,2px 0 3px 0, 2px 0 4px 0, 2px 0 5px 0;
+			}
+
+	</style>
+	<style type="text/css">
+
+			.hidden {
+					visibility: hidden;
+			}
+
+			#layoutcontainer {
+					position: relative;
+					display: block;
+					margin: auto;
+					width: 491px;
+					height: 420px;
+					border: 3px solid #3c3c3c;
+					padding: 0px;
+			}
+
+			#apptitle {
+					position: absolute;
+					display: block;
+					text-align: center;
+					left: 0;
+					top: 0;
+					width: 475px;
+					height: 45px;
+			}
+
+			#inoutfield {
+					position: absolute;
+					left: 0;
+					top: 50px;
+					width: 475px;
+					height: 45px;
+			}
+
+			#digit1 {
+					position: absolute;
+					left: 0;
+					top: 120px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit2 {
+					position: absolute;
+					left: 100px;
+					top: 120px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit3 {
+					position: absolute;
+					left: 200px;
+					top: 120px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#opplus{
+					position: absolute;
+					left: 300px;
+					top: 120px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit4 {
+					position: absolute;
+					left: 400px;
+					top: 120px;
+					width: 90px;
+					height: 290px;
+			}
+
+			#digit5 {
+					position: absolute;
+					left: 0;
+					top: 220px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit6 {
+					position: absolute;
+					left: 100px;
+					top: 220px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#opminus {
+					position: absolute;
+					left: 200px;
+					top: 220px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit7 {
+					position: absolute;
+					left: 300px;
+					top: 220px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit8 {
+					position: absolute;
+					left: 0;
+					top: 320px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit9 {
+					position: absolute;
+					left: 100px;
+					top: 320px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#digit0 {
+					position: absolute;
+					left: 200px;
+					top: 320px;
+					width: 90px;
+					height: 90px;
+			}
+
+			#opequal {
+					position: absolute;
+					left: 300px;
+					top: 320px;
+					width: 90px;
+					height: 90px;
+			}
+	</style>
+	<body>
+		<div id="layoutcontainer">
+			<h1 class="apptitle" id="apptitle" aria-label="Application title">Simple Caculator</h1>
+			<label for="inoutfield" class="hidden">User input or calculator output</label>
+			<input class="textfield" id="inoutfield" type="text" name="inOutText" aria-label="input or output"/>
+			<input class="button" id="digit1" type="button" value="1" name="op1" aria-label="digit 1"/>
+			<input class="button" id="digit2" type="button" value="2" name="op2" aria-label="digit 2"/>
+			<input class="button" id="digit3" type="button" value="3" name="op3" aria-label="digit 3"/>
+			<input class="button" id="digit4" type="button" value="4" name="op4" aria-label="digit 4">
+			<input class="button" id="digit5" type="button" value="5" name="op5" aria-label="digit 5"/>
+			<input class="button" id="digit6" type="button" value="6" name="op6" aria-label="digit 6"/>
+			<input class="button" id="digit7" type="button" value="7" name="op7" aria-label="digit 7"/>
+			<input class="button" id="digit8" type="button" value="8" name="op8" aria-label="digit 8"/>
+			<input class="button" id="digit9" type="button" value="9" name="op9" aria-label="digit 9"/>
+			<input class="button" id="digit0" type="button" value="0" name="op0" aria-label="digit 0"/>
+			<input class="button" id="opplus" type="button" value="+" name="opplus" aria-label="opplus"/>
+			<input class="button" id="opminus" type="button" value="-" name="opminus" aria-label="opminus"/>
+			<input class="button" id="opequal" type="button" value="=" name="opequal" aria-label="opequal"/>
+		</div>
+	</body>
+</html>
