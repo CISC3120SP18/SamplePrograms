@@ -1,0 +1,128 @@
+
+#layoutcontainer {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 491px;
+    height: 420px;
+    border: 3px solid #3c3c3c;
+    padding: 0px;
+}
+
+.gridlayout {
+    display: grid;
+    grid-template-columns: repeat(5, 90px);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(45px, auto);
+}
+
+#apptitle {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    display: block;
+    text-align: center;
+    grid-column: 1 / span 5;
+    grid-row: 1;
+}
+
+#inoutlabel {
+    display: none;
+    visibility: hidden;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#inoutfield {
+    grid-column: 1 / 6;
+    grid-row: 2;
+}
+
+#digit1 {
+    grid-column: 1;
+    grid-row: 3;
+    width: 90px;
+    height: 90px;
+}
+
+#digit2 {
+    grid-column: 2;
+    grid-row: 3;
+    width: 90px;
+    height: 90px;
+}
+
+#digit3 {
+    grid-column: 3;
+    grid-row: 3;
+    width: 90px;
+    height: 90px;
+}
+
+#opplus{
+    grid-column: 4;
+    grid-row: 3;
+    width: 90px;
+    height: 90px;
+}
+
+#digit4 {
+    grid-column: 1;
+    grid-row: 4;
+    width: 90px;
+    height: 90px;
+}
+
+#digit5 {
+    grid-column: 2;
+    grid-row: 4;
+    width: 90px;
+    height: 90px;
+}
+
+#digit6 {
+    grid-column: 3;
+    grid-row: 4;
+    width: 90px;
+    height: 90px;
+}
+
+#opminus {
+    grid-column: 4;
+    grid-row: 4;
+    width: 90px;
+    height: 90px;
+}
+
+#digit7 {
+    grid-column: 1;
+    grid-row: 5;
+    width: 90px;
+    height: 90px;
+}
+
+#digit8 {
+    grid-column: 2;
+    grid-row: 5;
+    width: 90px;
+    height: 90px;
+}
+
+#digit9 {
+    grid-column: 3;
+    grid-row: 5;
+    width: 90px;
+    height: 90px;
+}
+
+#digit0 {
+    grid-column: 4;
+    grid-row: 5;
+    width: 90px;
+    height: 90px;
+}
+
+#opequal {
+    grid-column: 5;
+    grid-row: 3 / 6;
+    width: 90px;
+}

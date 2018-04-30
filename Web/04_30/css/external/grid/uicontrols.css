@@ -1,0 +1,45 @@
+.apptitle {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+.textfield {
+    background-color: #a6b5c9; 
+    background-image:
+        linear-gradient(0deg, #303842 0%, #e0e0e0 10%, #fff 50%, #e0e0e0 90%, #303842 100%),
+        linear-gradient(90deg, #768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+    border-radius: 5px;
+    padding: 7px 7px 7px 7px;
+    color: #242d35;
+    font-family: Helvetica;
+    font-size: 12px;
+ }
+
+.button {
+    background-color: #a6b5c9; 
+    background-image:
+        linear-gradient(0deg, #303842 0%, #3e5577 20%, #fbfbfb 100%),
+        linear-gradient(90deg, #768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+    border-radius: 10px;
+    padding: 7px 30px 7px 30px;
+    color: #242d35;
+    font-family: "Helvetica";
+    font-size: 12px;
+}
+
+.button:hover {
+    background-color: #a6b5c9; 
+    background-image:
+        linear-gradient(180deg, #303842 0%, #3e5577 20%, #fbfbfb 100%),
+        linear-gradient(270deg, #768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+    border-radius: 10px;
+    padding: 7px 30px 7px 30px;
+    color: #242d35;
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.button:active {
+    box-shadow: 2px 0 0 0,2px 0 3px 0, 2px 0 4px 0, 2px 0 5px 0;
+}
+
