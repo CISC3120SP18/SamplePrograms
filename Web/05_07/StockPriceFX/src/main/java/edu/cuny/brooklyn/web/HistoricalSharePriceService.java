@@ -15,8 +15,8 @@ import javax.json.JsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SecuritySharePriceService {
-	private final static Logger LOGGER = LoggerFactory.getLogger(SecuritySharePriceService.class);
+public class HistoricalSharePriceService {
+	private final static Logger LOGGER = LoggerFactory.getLogger(HistoricalSharePriceService.class);
 	private final static String META_DATA_KEY = "Meta Data";
 	private final static String WEEKLY_TIME_SERIES_KEY = "Weekly Time Series";
 	private final static String CLOSE_PRICE_KEY = "4. close";
@@ -28,7 +28,7 @@ public class SecuritySharePriceService {
 	
 	private String apiKey;
 
-	public SecuritySharePriceService(String apiKey) {
+	public HistoricalSharePriceService(String apiKey) {
 		this.apiKey = apiKey;
 	}
 

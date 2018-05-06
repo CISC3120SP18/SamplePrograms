@@ -16,8 +16,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class EquitySharePriceFXApp extends Application {
-	private final static Logger LOGGER = LoggerFactory.getLogger(EquitySharePriceFXApp.class);
+public class IntraDayPriceFXApp extends Application {
+	private final static Logger LOGGER = LoggerFactory.getLogger(IntraDayPriceFXApp.class);
 	private final static String MAIN_VIEW_FXML = "fxml_mainview.fxml";
 	private final static String API_KEY = "ALPHAVANTAGE_API_KEY";
 	private final static String API_KEY_PLACE_HOLDER = "YOUR_ALPHAVANTAGE_API_KEY";
@@ -37,7 +37,7 @@ public class EquitySharePriceFXApp extends Application {
 		Parent root = loader.load(getClass().getResourceAsStream(MAIN_VIEW_FXML));
 		Scene scene = new Scene(root);
 
-		primaryStage.setTitle("Equity Share Price");
+		primaryStage.setTitle("Intra-Day Equity Share Price");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		LOGGER.info("loaded the UI");
@@ -54,7 +54,7 @@ public class EquitySharePriceFXApp extends Application {
 		}
 		LOGGER.info("loaded the API key.");
 
-		SecuritySharePriceService service = new SecuritySharePriceService(apiKey); 
+		IntradaySharePriceService service = new IntradaySharePriceService(apiKey); 
 		MainViewController controller = loader.getController();
 		controller.setSecuritySharePriceShare(service);
 		LOGGER.info("Initialized the share price service.");
@@ -67,7 +67,7 @@ public class EquitySharePriceFXApp extends Application {
 
 	private String loadApiKey() throws IOException {
 		Properties properties = new Properties();
-		InputStream in = getClass().getClassLoader().getResourceAsStream(getClass().getSimpleName() + ".properties");
+		InputStream in = getClass().getClassLoader().getResourceAsStream(getClass().getSimpleName() + ".properties.secret");
 		if (in == null) {
 			throw new IOException("Cannot locate the application configuration file.");
 		}

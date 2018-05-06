@@ -34,7 +34,7 @@ public class MainViewController {
 	@FXML
 	private Button drawPriceButton;
 	
-	private SecuritySharePriceService sharePriceService;
+	private HistoricalSharePriceService sharePriceService;
 	
 	private LocalDate startDate;
 	
@@ -46,7 +46,7 @@ public class MainViewController {
 		endDatePicker.setOnAction(e -> setEndDate());
 	}
 
-	public void setSecuritySharePriceShare(SecuritySharePriceService service) {
+	public void setSecuritySharePriceShare(HistoricalSharePriceService service) {
 		if (service == null) {
 			throw new IllegalArgumentException("SecuritySharePriceService object must not be null.");
 		}
