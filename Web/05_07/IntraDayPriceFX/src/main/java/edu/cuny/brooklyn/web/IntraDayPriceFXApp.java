@@ -67,7 +67,7 @@ public class IntraDayPriceFXApp extends Application {
 
 	private String loadApiKey() throws IOException {
 		Properties properties = new Properties();
-		InputStream in = getClass().getClassLoader().getResourceAsStream(getClass().getSimpleName() + ".properties.secret");
+		InputStream in = getClass().getClassLoader().getResourceAsStream(getClass().getSimpleName() + ".properties");
 		if (in == null) {
 			throw new IOException("Cannot locate the application configuration file.");
 		}
