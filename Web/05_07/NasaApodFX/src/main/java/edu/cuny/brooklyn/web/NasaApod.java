@@ -1,3 +1,5 @@
+// TODO 2: complete the fromJsonObject method below
+
 package edu.cuny.brooklyn.web;
 
 import java.net.URI;
@@ -77,18 +79,10 @@ public class NasaApod {
 	}
 	
 	public static NasaApod fromJsonObject(JsonObject obj) throws URISyntaxException {
-		String date = obj.getString(DATE_KEY);
-		LocalDate localDate = LocalDate.parse(date, DATETIME_FORMATTER);
-		String title = obj.getString(TITLE_KEY);
-		String explanation = obj.getString(EXPLANATION_KEY);
-		String mediaType = obj.getString(MEDIA_TYPE_KEY);
-		URI mediaURI = new URI(obj.getString(URL_KEY));
-		URI hdPictureURI = null;
-		if (mediaType.equals("image")) {
-			hdPictureURI = new URI(obj.getString(HDURL_KEY));
-		}
-		
-		return new NasaApod(localDate, title, explanation, mediaType, mediaURI, hdPictureURI);
+		// TODO 2(a): parsing the JsonObject obj to obtain a NasaApod object. Note
+		//            that this method is expected to be called in the readNasaApod method
+		//            in the NasaApodService class
+		return null;
 	}
 	
 	public static String formatDate(LocalDate date) {
