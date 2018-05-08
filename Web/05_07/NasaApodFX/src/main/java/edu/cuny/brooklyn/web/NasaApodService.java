@@ -1,16 +1,13 @@
+// TODO 1: Complete this class, look for the TODO's below. 
+
 package edu.cuny.brooklyn.web;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
-
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,12 +33,12 @@ public class NasaApodService {
 	}
 	
 	public NasaApod getApod(String date, boolean highResolution) throws IOException, URISyntaxException {
-		RequestParameterBuilder rpb = new RequestParameterBuilder();
-		rpb.add("date", date)
-			.add("hd",  highResolution)
-			.add("api_key",  apiKey);
+		// TODO 1(a): use the RequestParameterBuilder to build the query String, 
+		//            i.e. the query variable should references the value of the
+		//            query string. 
+		String query = "";
 		
-		HttpURLConnection conn = sendHttpRequest(API_END_POINT, rpb.toURLQuery());
+		HttpURLConnection conn = sendHttpRequest(API_END_POINT, query);
 
 
 		// check the status
@@ -81,16 +78,9 @@ public class NasaApodService {
 	}
 	
 	private NasaApod readNasaApod(HttpURLConnection conn) throws IOException, URISyntaxException {
-		// we need to parse the Json content. consider using one of the few popular APIs
-		// such as, Gson, Genson, Jackson
+		// TODO 1(b): construct a NasaApod object from returned JSON object/array
 		NasaApod nasaApod = null;
-		try (InputStream in = conn.getInputStream(); 
-				JsonReader rdr = Json.createReader(in)) {
-			JsonObject obj = rdr.readObject();
-			LOGGER.debug("JsonObject received: " + obj.toString());
-
-			nasaApod = NasaApod.fromJsonObject(obj);
-		}
+		
 		return nasaApod;
 	}
 }
