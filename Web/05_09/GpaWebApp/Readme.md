@@ -49,7 +49,7 @@ Is CN=The Instructor, OU=Computer & Information Science, O=CUNY Brooklyn College
 
 C:\Users\CISC3120\SamplePrograms\Web\05_09\GpaWebApp>
 ```
-where the Eclipse project is at `C:\Users\hui\work\course\CISC3120\sampleprograms\web\GpaApp` and 
+where the Eclipse project is at `C:\Users\CISC3120\SamplePrograms\Web\05_09\GpaWebApp>` and 
 the keystore password is cisc3120. 
 
 ### Configure Spring Boot
