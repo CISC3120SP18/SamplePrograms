@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--  See https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+<title>Student GPA</title>
+</head>
+<body>
+	<div class="container">
+		<div class="border border-primary rounded p-2">
+			<h1>GPA</h1>
+			<div class="card" style="width: 20rem;">
+				<div class="card-body">
+					<h4 class="card-title" th:text="'Student ID: ' + ${sid}"></h4>
+					<p class="card-text" th:text="'GPA: ' + ${gpa}" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--  See https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/webjars/popper.js/1.12.9/dist/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>
