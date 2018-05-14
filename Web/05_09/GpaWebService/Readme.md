@@ -22,8 +22,7 @@ keytool -genkeypair -alias springframework -storetype PKCS12 -keyalg RSA -keysiz
 
 Be aware that `keytool` is at the JDK's bin directory. If the directory is not in the search path of your
 environment, your environment may report that it cannot find the command. To resolve this, you can either
-set the search path to include the JDK's bin directory, or use the absolute path of the `keytool`. In the 
-following example transcript, we use the absolute path of `keytool`.  
+set the search path to include the JDK's bin directory, or use the absolute path of the `keytool`.
 ```
 cd C:\Users\CISC3120\SamplePrograms\Web\05_09\GpaWebApp
 C:\Users\CISC3120\SamplePrograms\Web\05_09\GpaWebApp>keytool -genkeypair -alias springframework -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
